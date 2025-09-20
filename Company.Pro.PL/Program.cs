@@ -1,3 +1,9 @@
+using Company.Pro.BLL.Interfaces;
+using Company.Pro.BLL.Repositories;
+using Company.Pro.DAL.Data.Contexts;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
+
 namespace Company.Pro.PL
 {
     public class Program
@@ -7,7 +13,13 @@ namespace Company.Pro.PL
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews(); // Built-in MVC Service
+            builder.Services.AddScoped<IDepartmentRepository,DepartmentReository>(); // Dependency Injection For DepartmentReository Class + Interface not concrete class
+            builder.Services.AddDbContext<CompanyDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            }); // Dependency Injection For CompanyDbContext Class
+
 
             var app = builder.Build();
 
