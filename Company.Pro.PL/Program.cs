@@ -15,6 +15,7 @@ namespace Company.Pro.PL
             // Add services to the container.
             builder.Services.AddControllersWithViews(); // Built-in MVC Service
             builder.Services.AddScoped<IDepartmentRepository,DepartmentReository>(); // Dependency Injection For DepartmentReository Class + Interface not concrete class
+            builder.Services.AddScoped<IEmployeeRepository,EmployeeRepository>(); // Dependency Injection For EmployeeRepository Class + Interface not concrete class
             builder.Services.AddDbContext<CompanyDbContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -40,7 +41,7 @@ namespace Company.Pro.PL
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Department}/{action=Index}/{id?}");
 
             app.Run();
         }
