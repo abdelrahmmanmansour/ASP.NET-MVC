@@ -37,5 +37,6 @@ namespace Company.Pro.DAL.Data.Contexts
 
         // Represents the Departments table in the database
         public DbSet<Department> Departments { get; set; }
+        public DbSet<Employee> Employees { get; set; }
     }
 }
