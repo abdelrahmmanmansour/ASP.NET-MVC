@@ -9,15 +9,14 @@ using System.Threading.Tasks;
 
 namespace Company.Pro.BLL.Repositories
 {
-    // Implementation of the IDepartmentRepository interface
+    // Implementation of the IEmployeeRepository interface
     // I need to all method => connect to Database
     // so make object from CompanyDbContext globally
-    public class DepartmentReository : GenericRepository<Department>,IDepartmentRepository
+    public class EmployeeRepository : GenericRepository<Employee>, IEmployeeRepository //  To Inherit All Method From Generic Repository
     {
-
-        public DepartmentReository(CompanyDbContext context)  : base(context)
+        public EmployeeRepository(CompanyDbContext context) : base(context)
         {
-            
+
         }
 
 
@@ -30,35 +29,35 @@ namespace Company.Pro.BLL.Repositories
         //private readonly CompanyDbContext _context; // Null
 
         //// Asks CLR to create an object from CompanyDbContext class
-        //public DepartmentReository(CompanyDbContext companyDbContext)
+        //public EmployeeRepository(CompanyDbContext companyDbContext)
         //{
         //    _context = companyDbContext;
         //}
-        //public IEnumerable<Department> GetAll()
+        //public IEnumerable<Employee> GetAll()
         //{
-        //    return _context.Departments.ToList();
+        //    return _context.Employees.ToList();
         //}
 
-        //public Department? Get(int id)
+        //public Employee? Get(int id)
         //{
-        //    return _context.Departments.Find(id);
+        //    return _context.Employees.Find(id);
         //}
 
-        //public int Add(Department department)
+        //public int Add(Employee employee)
         //{
-        //    _context.Departments.Add(department);
+        //    _context.Employees.Add(employee);
         //    return _context.SaveChanges();
         //}
 
-        //public int Update(Department department)
+        //public int Update(Employee employee)
         //{
-        //    _context.Departments.Update(department);
+        //    _context.Employees.Update(employee);
         //    return _context.SaveChanges();
         //}
 
-        //public int Delete(Department department)
+        //public int Delete(Employee employee)
         //{
-        //    _context.Departments.Remove(department);
+        //    _context.Employees.Remove(employee);
         //    return _context.SaveChanges();
         //}
     }
