@@ -16,6 +16,10 @@ namespace Company.Pro.DAL.Data.Configurations
             builder.HasKey(D => D.Id);
             builder.Property(D => D.Name).HasColumnType("varchar").HasMaxLength(100).IsRequired();
             builder.Property(D => D.Salary).HasColumnType("decimal(18,2)");
+            builder.HasOne(E => E.Department)
+                   .WithMany(D => D.Employees)
+                   .HasForeignKey(E => E.DepartmentId)
+                   .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }
