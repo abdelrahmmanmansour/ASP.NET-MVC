@@ -1,8 +1,11 @@
 using Company.Pro.BLL.Interfaces;
 using Company.Pro.BLL.Repositories;
 using Company.Pro.DAL.Data.Contexts;
+using Company.Pro.PL.Mapping;
+using Company.Pro.PL.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Company.Pro.PL
 {
@@ -15,12 +18,24 @@ namespace Company.Pro.PL
             // Add services to the container.
             builder.Services.AddControllersWithViews(); // Built-in MVC Service
             builder.Services.AddScoped<IDepartmentRepository,DepartmentReository>(); // Dependency Injection For DepartmentReository Class + Interface not concrete class
-            builder.Services.AddScoped<IEmployeeRepository,EmployeeRepository>(); // Dependency Injection For EmployeeRepository Class + Interface not concrete class
+            builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>(); // Dependency Injection For EmployeeRepository Class + Interface not concrete class
+            builder.Services.AddAutoMapper(M => M.AddProfile(new MappingProfile())); // Dependency Injection For AutoMapper Class + MappingProfile Class
             builder.Services.AddDbContext<CompanyDbContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             }); // Dependency Injection For CompanyDbContext Class
 
+            // To Allow Dependency Injection
+            #region The Differences Between AddScoped,AddTransient,AddSingleton
+            // Life Time Of Object:
+
+            // 1. AddScoped => CLR Create Object Per Request(Repository)
+            // 2. AddTransient => CLR Create Object Per Operation(Configuration)
+            // 3. AddSingleton => CLR Create Object Per Application(Chaching)
+            builder.Services.AddScoped<IScooped, Scooped>(); // Dependency Injection For Scooped Class + Interface not concrete class
+            builder.Services.AddTransient<ITransiant, Transiant>(); // Dependency Injection For Transiant Class + Interface not concrete class
+            builder.Services.AddSingleton<ISingelton, Singelton>(); // Dependency Injection For Singelton Class + Interface not concrete class
+            #endregion
 
             var app = builder.Build();
 

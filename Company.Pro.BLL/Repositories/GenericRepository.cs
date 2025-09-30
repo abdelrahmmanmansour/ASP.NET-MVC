@@ -1,6 +1,7 @@
 ﻿using Company.Pro.BLL.Interfaces;
 using Company.Pro.DAL.Data.Contexts;
 using Company.Pro.DAL.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,11 @@ namespace Company.Pro.BLL.Repositories
         }
         public IEnumerable<T> GetAll()
         {
+            if(typeof(T) == typeof(Employee))
+            {
+                // Eager Loading
+                return (IEnumerable<T>)_context.Employees.Include(E => E.Department).ToList();
+            }
             return _context.Set<T>().ToList();
         }
 

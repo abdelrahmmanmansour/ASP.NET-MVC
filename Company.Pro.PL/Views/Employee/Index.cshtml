@@ -1,12 +1,55 @@
 ﻿@model IEnumerable<Employee>
 @{
     ViewData["Title"] = "Index";
+    // string? ViewDataMessage = ViewData["Message"] as string; // Must be cast to string
+    // string? ViewBagMessage = ViewBag.Message; // No need to cast
 }
 
 <h1>All Employee</h1>
 
 <br />
 <br />
+
+@* <div class="alert alert-danger">
+    <p>
+        @ViewData["Message"]
+    </p>
+</div> *@
+
+@* <div class="alert alert-danger">
+    <p>
+        @ViewBagMessage
+    </p>
+</div> *@
+
+@if(!string.IsNullOrEmpty(TempData["Message"]as string))
+{
+    <div class="alert alert-success">
+        <p>
+            @TempData["Message"]
+        </p>
+    </div>
+}
+
+<form class="d-flex align-items-center gap-2 my-3">
+    <input id="SearchInput"
+           name="SearchInput"
+           class="form-control w-auto"
+           placeholder="🔍 Search by name..." />
+
+    <button type="submit" class="btn btn-success px-4">
+        Search
+    </button>
+</form>
+
+@* <form>
+    <div>
+        <input name="SearchInput" class="form-control" placeholder="Search by name..." />
+        <input type="submit" class="btn btn-success" value="Search" />
+    </div>
+</form> *@
+
+
 
 <a asp-action="Create" asp-controller="Employee" class="btn btn-primary">Create Employee</a>
 
@@ -28,6 +71,7 @@
                 <th>IsDeleted</th>
                 <th>@Html.DisplayNameFor(E => E.HiringDate)</th>
                 <th>@Html.DisplayNameFor(E => E.CreateAt)</th>
+                <th>Department</th>
                 <th>Datails</th>
                 <th>Update</th>
                 <th>Delete</th>
@@ -47,6 +91,16 @@
                     <td>@item.IsDeleted</td>
                     <td>@item.HiringDate.ToString("dd/MM/yyyy")</td>
                     <td>@item.CreateAt.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        @if(item.Department != null)
+                        {
+                            @item.Department.Name
+                        }
+                        else
+                        {
+                            <span class="text-danger">No Department</span>
+                        }
+                    </td>
                     <partial name="ThreeButtonPartialView" model="@item.Id" />
                 </tr>
             }

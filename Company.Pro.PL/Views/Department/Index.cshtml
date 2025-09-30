@@ -1,12 +1,36 @@
 ﻿@model IEnumerable<Department>
 @{
     ViewData["Title"] = "Index";
+    // string? ViewDataMessage = ViewData["Message"] as string; // Must be cast to string
+    // string? ViewBagMessage = ViewBag.Message; // No need to cast
 }
 
 <h1>All Department</h1>
 
 <br />
 <br />
+
+
+@* <div class="alert alert-danger">
+    <p>
+        @ViewData["Message"]
+    </p>
+</div> *@
+
+@* <div class="alert alert-danger">
+    <p>
+        @ViewBagMessage
+    </p>
+</div> *@
+
+@if(!string.IsNullOrEmpty(TempData["Message"]as string))
+{
+    <div class="alert alert-success">
+        <p>
+            @TempData["Message"]
+        </p>
+    </div>
+}
 
 <a asp-action="Create" asp-controller="Department" class="btn btn-primary">Create Department</a>
 

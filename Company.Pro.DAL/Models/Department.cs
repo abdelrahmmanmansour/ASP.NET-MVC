@@ -12,5 +12,10 @@ namespace Company.Pro.DAL.Models
         public string Code { get; set; }
         public string Name { get; set; }
         public DateTime CreateAt { get; set; }
+
+        #region Navigational Property
+        // Navigation property to represent the one-to-many relationship with Employees
+        public List<Employee> Employees { get; set; }
+        #endregion
     }
 }
