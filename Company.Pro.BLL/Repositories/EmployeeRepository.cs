@@ -1,6 +1,7 @@
 ﻿using Company.Pro.BLL.Interfaces;
 using Company.Pro.DAL.Data.Contexts;
 using Company.Pro.DAL.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +15,21 @@ namespace Company.Pro.BLL.Repositories
     // so make object from CompanyDbContext globally
     public class EmployeeRepository : GenericRepository<Employee>, IEmployeeRepository //  To Inherit All Method From Generic Repository
     {
+        private readonly CompanyDbContext _context;
+
         public EmployeeRepository(CompanyDbContext context) : base(context)
         {
-
+            _context = context;
         }
+
+        // Method To Search Employees By Name
+        public List<Employee> GetEmployeeByName(string name)
+        {
+            // Include Department Data Using Eager Loading
+            return _context.Employees.Include(E => E.Department).Where(E => E.Name.ToLower().Contains(name.ToLower())).ToList();
+        }
+
+
 
 
 

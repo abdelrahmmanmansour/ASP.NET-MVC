@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Company.Pro.PL.Dtos
 {
@@ -35,5 +36,8 @@ namespace Company.Pro.PL.Dtos
         [DataType(DataType.DateTime)]
         [Display(Name = "Created At")]
         public DateTime CreateAt { get; set; }
+
+        [DisplayName("Department")]
+        public int? DepartmentId { get; set; }
     }
 }

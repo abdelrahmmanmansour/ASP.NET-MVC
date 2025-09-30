@@ -11,7 +11,7 @@ namespace Company.Pro.DAL.Models
     {
         public string Name { get; set; }
 
-        [Range(20,60)]
+        [Range(20, 60)]
         public int? Age { get; set; }
 
         [EmailAddress]
@@ -37,5 +37,11 @@ namespace Company.Pro.DAL.Models
         [DataType(DataType.DateTime)]
         [Display(Name = "Created At")]
         public DateTime CreateAt { get; set; }
+
+        #region Navigational Property
+        // Navigation property to represent the one-to-many relationship with Employees
+        public int? DepartmentId { get; set; }
+        public Department Department { get; set; }
+        #endregion
     }
 }

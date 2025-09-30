@@ -13,7 +13,8 @@ namespace Company.Pro.BLL.Interfaces
     public interface IEmployeeRepository : IGenericRepository<Employee>
     {
 
-
+        // Method To Search Employees By Name
+        List<Employee> GetEmployeeByName(string name);
 
 
 
