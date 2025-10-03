@@ -39,5 +39,9 @@ namespace Company.Pro.PL.Dtos
 
         [DisplayName("Department")]
         public int? DepartmentId { get; set; }
+
+        public IFormFile? Image { get; set; } // For Image Upload
+
+        public string? ImageName { get; set; } // For Storing Image Name in Database
     }
 }

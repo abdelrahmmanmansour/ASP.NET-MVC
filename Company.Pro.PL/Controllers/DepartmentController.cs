@@ -4,26 +4,30 @@ using Company.Pro.BLL.Repositories;
 using Company.Pro.DAL.Models;
 using Company.Pro.PL.Dtos;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Company.Pro.PL.Controllers
 {
     public class DepartmentController : Controller
     {
-        private readonly IDepartmentRepository _departmentReository;  // Null
+        private readonly IUnitOfWork _unitOfWork;
+
+        //private readonly IDepartmentRepository _departmentReository;  // Null
         private readonly IMapper _mapper;
 
         // Ask CLR TO Create Object from DepartmentReository Class
         // Dependency Injection 
-        public DepartmentController(IDepartmentRepository departmentReository,IMapper mapper)
+        public DepartmentController(IUnitOfWork unitOfWork,IMapper mapper)
         {
-            _departmentReository = departmentReository;
+            _unitOfWork = unitOfWork;
+            //_departmentReository = departmentReository;
             _mapper = mapper;
         }
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             // Get all departments from the database
-            var departments = _departmentReository.GetAll();
+            var departments = await _unitOfWork.DepartmentRepository.GetAllAsync();
             // Storage in View => Dictionary
             // Has Key And Value
             // Has Three Types Of TempData , ViewData , ViewBag
@@ -47,7 +51,7 @@ namespace Company.Pro.PL.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(CreateDepartmentDto model)
+        public async Task<IActionResult> Create(CreateDepartmentDto model)
         {
             // Display the create department form
             // Add Department
@@ -60,7 +64,8 @@ namespace Company.Pro.PL.Controllers
                 //    CreateAt = model.CreateAt
                 //};
                 var department = _mapper.Map<Department>(model); // Using AutoMapper To Map From CreateDepartmentDto To Department
-                var count = _departmentReository.Add(department);
+                await _unitOfWork.DepartmentRepository.AddAsync(department);
+                var count = await _unitOfWork.CompleteSaveChangesAsync(); // To Save Changes In Database
                 if (count > 0)
                 {
                     TempData["Message"] = "Department Created Successfully"; // TempData To Send Message From Create Action To Index Action
@@ -71,13 +76,13 @@ namespace Company.Pro.PL.Controllers
         }
 
         [HttpGet]
-        public IActionResult Details(int? id,string ViewName = "Details")
+        public async Task<IActionResult> Details(int? id,string ViewName = "Details")
         {
             if (id is null)
             {
                 return BadRequest("Invalid Id");
             }
-            var department = _departmentReository.Get(id.Value); // id.Value => because id is nullable
+            var department = await _unitOfWork.DepartmentRepository.GetAsync(id.Value); // id.Value => because id is nullable
             if (department is null)
             {
                 return NotFound("Department Not Found");
@@ -86,13 +91,13 @@ namespace Company.Pro.PL.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(int? id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id is null)
             {
                 return BadRequest("Invalid Id");
             }
-            var department = _departmentReository.Get(id.Value); // id.Value => because id is nullable
+            var department = await _unitOfWork.DepartmentRepository.GetAsync(id.Value); // id.Value => because id is nullable
             if (department is null)
             {
                 return NotFound("Department Not Found");
@@ -109,7 +114,7 @@ namespace Company.Pro.PL.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken] // To Prevent Any Tools From Sending Request To This Action Method
-        public IActionResult Edit([FromRoute] int id, CreateDepartmentDto model) // Model Binding FromRoute To Prevent Overposting Attack
+        public async Task<IActionResult> Edit([FromRoute] int id, CreateDepartmentDto model) // Model Binding FromRoute To Prevent Overposting Attack
         {
             if (ModelState.IsValid)
             {
@@ -120,7 +125,8 @@ namespace Company.Pro.PL.Controllers
                     Name = model.Name,
                     CreateAt = model.CreateAt
                 };
-                var count = _departmentReository.Update(department);
+                _unitOfWork.DepartmentRepository.Update(department);
+                var count = await _unitOfWork.CompleteSaveChangesAsync(); // To Save Changes In Database
                 if (count > 0)
                 {
                     return RedirectToAction("Index");
@@ -130,23 +136,24 @@ namespace Company.Pro.PL.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete(int? id)
+        public async Task<IActionResult> Delete(int? id)
         {
-            return Details(id, "Delete");
+            return await Details(id, "Delete");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken] // To Prevent Any Tools From Sending Request To This Action Method
-        public IActionResult Delete([FromRoute] int id, Department department) // Model Binding FromRoute To Prevent Overposting Attack
+        public async Task<IActionResult> Delete([FromRoute] int id, Department department) // Model Binding FromRoute To Prevent Overposting Attack
         {
             //if (ModelState.IsValid) // No Need Because No Input In View
             //{
             if (id != department.Id)
                 {
                     return BadRequest("Invalid Id");
-                }
-                var count = _departmentReository.Delete(department);
-                if (count > 0)
+            }
+            _unitOfWork.DepartmentRepository.Delete(department);
+            var count = await _unitOfWork.CompleteSaveChangesAsync(); // To Save Changes In Database
+            if (count > 0)
                 {
                     return RedirectToAction("Index");
                 }

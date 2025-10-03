@@ -23,10 +23,10 @@ namespace Company.Pro.BLL.Repositories
         }
 
         // Method To Search Employees By Name
-        public List<Employee> GetEmployeeByName(string name)
+        public async Task<List<Employee>> GetEmployeeByNameAsync(string name)
         {
             // Include Department Data Using Eager Loading
-            return _context.Employees.Include(E => E.Department).Where(E => E.Name.ToLower().Contains(name.ToLower())).ToList();
+            return await _context.Employees.Include(E => E.Department).Where(E => E.Name.ToLower().Contains(name.ToLower())).ToListAsync();
         }
 
 

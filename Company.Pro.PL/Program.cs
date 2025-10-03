@@ -19,6 +19,7 @@ namespace Company.Pro.PL
             builder.Services.AddControllersWithViews(); // Built-in MVC Service
             builder.Services.AddScoped<IDepartmentRepository,DepartmentReository>(); // Dependency Injection For DepartmentReository Class + Interface not concrete class
             builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>(); // Dependency Injection For EmployeeRepository Class + Interface not concrete class
+            builder.Services.AddScoped<IUnitOfWork,UnitOfWork>(); // Dependency Injection For UnitOfWork Class + Interface not concrete class
             builder.Services.AddAutoMapper(M => M.AddProfile(new MappingProfile())); // Dependency Injection For AutoMapper Class + MappingProfile Class
             builder.Services.AddDbContext<CompanyDbContext>(options =>
             {
@@ -36,6 +37,10 @@ namespace Company.Pro.PL
             builder.Services.AddTransient<ITransiant, Transiant>(); // Dependency Injection For Transiant Class + Interface not concrete class
             builder.Services.AddSingleton<ISingelton, Singelton>(); // Dependency Injection For Singelton Class + Interface not concrete class
             #endregion
+
+            // The Best Practice To performance The Application:
+            // Make Any Function (Syncronous) => (ASyncronous) => (await)
+            // In => BLL + PL
 
             var app = builder.Build();
 

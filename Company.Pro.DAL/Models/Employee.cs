@@ -43,5 +43,7 @@ namespace Company.Pro.DAL.Models
         public int? DepartmentId { get; set; }
         public Department Department { get; set; }
         #endregion
+
+        public string? ImageName { get; set; } // For Storing Image Name in Database
     }
 }
