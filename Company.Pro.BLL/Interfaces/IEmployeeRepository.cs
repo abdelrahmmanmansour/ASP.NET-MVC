@@ -14,7 +14,7 @@ namespace Company.Pro.BLL.Interfaces
     {
 
         // Method To Search Employees By Name
-        List<Employee> GetEmployeeByName(string name);
+        Task<List<Employee>> GetEmployeeByNameAsync(string name);
 
 
 

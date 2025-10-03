@@ -19,4 +19,8 @@
     <ProjectReference Include="..\Company.Pro.BLL\Company.Pro.BLL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\files\images\" />
+  </ItemGroup>
+
 </Project>

@@ -8,8 +8,9 @@
 <br />
 <br />
 
-<form asp-action="Edit" asp-controller="Employee">
+<form asp-action="Edit" asp-controller="Employee" enctype="multipart/form-data">
     <partial name="Create-Edit-PartialView/_CreateEditPartialView" />
+    <input asp-for="ImageName" hidden/>
     <br />
     <button type="submit" class="btn btn-primary">Save</button>
     <a asp-action="Index" asp-controller="Employee" class="btn btn-secondary">Back to List</a>

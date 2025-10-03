@@ -18,37 +18,37 @@ namespace Company.Pro.BLL.Repositories
         {
             _context = companyDbContext;
         }
-        public IEnumerable<T> GetAll()
+        public async Task<IEnumerable<T>> GetAllAsync()
         {
             if(typeof(T) == typeof(Employee))
             {
                 // Eager Loading
-                return (IEnumerable<T>)_context.Employees.Include(E => E.Department).ToList();
+                return (IEnumerable<T>) await _context.Employees.Include(E => E.Department).ToListAsync();
             }
-            return _context.Set<T>().ToList();
+            return await _context.Set<T>().ToListAsync();
         }
 
-        public T? Get(int id)
+        public async Task<T?> GetAsync(int id)
         {
-            return _context.Set<T>().Find(id);
+            return await _context.Set<T>().FindAsync(id);
         }
 
-        public int Add(T model)
+        public async Task AddAsync(T model)
         {
-            _context.Set<T>().Add(model);
-            return _context.SaveChanges();
+          await _context.Set<T>().AddAsync(model);
+            //return _context.SaveChanges();
         }
 
-        public int Update(T model)
+        public void Update(T model)
         {
             _context.Set<T>().Update(model);
-            return _context.SaveChanges();
+            //return _context.SaveChanges();
         }
 
-        public int Delete(T model)
+        public void Delete(T model)
         {
             _context.Set<T>().Remove(model);
-            return _context.SaveChanges();
+            //return _context.SaveChanges();
         }
     }
 }
