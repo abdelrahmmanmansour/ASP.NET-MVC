@@ -4,11 +4,13 @@ using Company.Pro.BLL.Interfaces;
 using Company.Pro.DAL.Models;
 using Company.Pro.PL.Dtos;
 using Company.Pro.PL.Helpers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace Company.Pro.PL.Controllers
 {
+    [Authorize]
     public class EmployeeController : Controller
     {
         //private readonly IEmployeeRepository _employeeRepository;  // Null

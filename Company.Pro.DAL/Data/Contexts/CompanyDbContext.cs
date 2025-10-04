@@ -1,4 +1,6 @@
 ﻿using Company.Pro.DAL.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,7 +12,7 @@ using System.Threading.Tasks;
 namespace Company.Pro.DAL.Data.Contexts
 {
     // Represents the database context for the Company application
-    public class CompanyDbContext : DbContext
+    public class CompanyDbContext : IdentityDbContext<AppUser> // Inherit From IdentityDbContext To Use Identity Features
     {
         #region Notes
         // Default constructor: initializes a new instance of the CompanyDbContext class
@@ -32,7 +34,7 @@ namespace Company.Pro.DAL.Data.Contexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-            base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);  // Call the base method to ensure Identity configurations are applied
         }
 
         // Represents the Departments table in the database
