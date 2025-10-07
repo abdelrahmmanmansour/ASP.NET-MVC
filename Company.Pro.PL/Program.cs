@@ -1,9 +1,11 @@
 using Company.Pro.BLL.Interfaces;
 using Company.Pro.BLL.Repositories;
 using Company.Pro.DAL.Data.Contexts;
+using Company.Pro.DAL.Models;
 using Company.Pro.PL.Mapping;
 using Company.Pro.PL.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -21,10 +23,17 @@ namespace Company.Pro.PL
             builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>(); // Dependency Injection For EmployeeRepository Class + Interface not concrete class
             builder.Services.AddScoped<IUnitOfWork,UnitOfWork>(); // Dependency Injection For UnitOfWork Class + Interface not concrete class
             builder.Services.AddAutoMapper(M => M.AddProfile(new MappingProfile())); // Dependency Injection For AutoMapper Class + MappingProfile Class
+            builder.Services.AddIdentity<AppUser, IdentityRole>()
+                            .AddEntityFrameworkStores<CompanyDbContext>(); // Dependency Injection For Identity Class + AppUser Class + IdentityRole Class + CompanyDbContext Class
             builder.Services.AddDbContext<CompanyDbContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             }); // Dependency Injection For CompanyDbContext Class
+
+            builder.Services.ConfigureApplicationCookie(config =>  // Configure Application Cookie
+            {
+                config.LoginPath = "/Account/SignIn"; // If User Not Authenticated Redirect To SignIn Action In Account Controller
+            });
 
             // To Allow Dependency Injection
             #region The Differences Between AddScoped,AddTransient,AddSingleton
@@ -57,6 +66,7 @@ namespace Company.Pro.PL
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(
