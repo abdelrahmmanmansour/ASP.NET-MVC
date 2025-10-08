@@ -1,0 +1,79 @@
+﻿@model IEnumerable<UserToReturnDto>
+
+<h1>All Users</h1>
+
+<br />
+<br />
+
+
+<form class="d-flex align-items-center gap-2 my-3">
+    <input id="SearchInput"
+           name="SearchInput"
+           class="form-control w-auto"
+           placeholder="🔍 Search by name..." />
+
+    <button type="submit" class="btn btn-success px-4">
+        Search
+    </button>
+</form>
+
+
+<br />
+<br />
+
+
+@if (Model.Count() > 0)
+{
+    <table class="table table-hover table-bordered align-middle shadow-sm rounded">
+        <thead class="text-center" style="background-color: #198754; color: white;">
+            <tr>
+                <th>ID</th>
+                <th>User Name</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Details</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        <tbody class="text-center">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.UserName</td>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                    <td>@item.Email</td>
+                    <td>
+                        @if (item.Roles != null && item.Roles.Any())
+                        {
+                            @foreach (var role in item.Roles)
+                            {
+                                <span class="badge bg-info text-dark me-1">@role</span>
+                            }
+                        }
+                        else
+                        {
+                            <span class="text-danger">No Roles</span>
+                        }
+                    </td>
+                    <partial name="ThreeButtonPartialView" model="@item.Id" />
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="mt-4 alert alert-warning">
+        <h4>No Users found :(</h4>
+    </div>
+}
+
+
+
+

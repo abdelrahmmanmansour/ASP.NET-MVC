@@ -57,7 +57,7 @@
                   <td>@item.Code</td>
                   <td>@item.Name</td>
                   <td>@item.CreateAt.ToString("dd/MM/yyyy")</td>
-                  <partial name="ThreeButtonPartialView" model="@item.Id" />
+                  <partial name="ThreeButtonPartialView" model="@item.Id.ToString()" />
               </tr>
             }
         </tbody>
