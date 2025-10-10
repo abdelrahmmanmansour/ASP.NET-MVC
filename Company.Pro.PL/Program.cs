@@ -24,7 +24,8 @@ namespace Company.Pro.PL
             builder.Services.AddScoped<IUnitOfWork,UnitOfWork>(); // Dependency Injection For UnitOfWork Class + Interface not concrete class
             builder.Services.AddAutoMapper(M => M.AddProfile(new MappingProfile())); // Dependency Injection For AutoMapper Class + MappingProfile Class
             builder.Services.AddIdentity<AppUser, IdentityRole>()
-                            .AddEntityFrameworkStores<CompanyDbContext>(); // Dependency Injection For Identity Class + AppUser Class + IdentityRole Class + CompanyDbContext Class
+                            .AddEntityFrameworkStores<CompanyDbContext>() // Dependency Injection For Identity Class + AppUser Class + IdentityRole Class + CompanyDbContext Class
+                            .AddDefaultTokenProviders(); // To Use Token Providers Like (Email Confirmation,Password Reset)
             builder.Services.AddDbContext<CompanyDbContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
