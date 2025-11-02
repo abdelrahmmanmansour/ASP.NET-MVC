@@ -7,39 +7,66 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Company.Pro.PL.styles.css" asp-append-version="true" />
+    <style>
+        /* تحسين المظهر العام */
+        .navbar {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+
+            .nav-link:hover {
+                color: #0d6efd !important;
+                transform: translateY(-1px);
+            }
+
+        footer {
+            background: #f8f9fa;
+            padding: 10px 0;
+            font-size: 0.95rem;
+        }
+    </style>
 </head>
 <body>
     @*Start Header*@
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Company.Pro.PL</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand fw-bold text-primary" asp-area="" asp-controller="Home" asp-action="Index">🏢 Company</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">🏠 Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">🔒 Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Department" asp-action="Index">Department</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Department" asp-action="Index">🏢 Department</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Index">Employee</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Index">👨‍💼 Employee</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Users</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">👥 Users</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Index">Roles</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Index">🛡️ Roles</a>
                         </li>
                         <li class="nav-item ms-auto">
-                            <a class="nav-link text-danger" asp-area="" asp-controller="Account" asp-action="SignOut">SignOut</a>
+                            <a class="nav-link text-danger" asp-area="" asp-controller="Account" asp-action="SignOut">🚪 Sign Out</a>
                         </li>
                     </ul>
                 </div>
@@ -47,7 +74,7 @@
         </nav>
     </header>
     @*End Header*@
-    
+
     @*Start Body*@
     <div class="container">
         <main role="main" class="pb-3">
@@ -56,10 +83,10 @@
     </div>
     @*End Body*@
 
-   @*Start Footer*@
+    @*Start Footer*@
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - Company.Pro.PL - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <div class="container text-center">
+            &copy; 2025 - Company.Pro.PL - <a asp-area="" asp-controller="Home" asp-action="Privacy">🔒 Privacy</a>
         </div>
     </footer>
     @*End Footer*@
