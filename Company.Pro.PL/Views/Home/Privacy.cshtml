@@ -1,6 +1,90 @@
 ﻿@{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Information Protection Policy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<style>
+    body {
+        background: linear-gradient(135deg, #f0f4ff, #e8f0fe);
+    }
+
+    .privacy-card {
+        backdrop-filter: blur(12px);
+        background: rgba(255, 255, 255, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 1.5rem;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .privacy-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+    .privacy-icon {
+        font-size: 3rem;
+        color: #4f46e5;
+    }
+
+    .section-title {
+        font-weight: 600;
+        color: #374151;
+    }
+
+    .section-text {
+        color: #6b7280;
+        line-height: 1.7;
+    }
+</style>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-9 col-md-10">
+            <div class="privacy-card p-5">
+                <div class="text-center mb-5">
+                    <i class="bi bi-shield-check privacy-icon"></i>
+                    <h1 class="fw-bold mt-3">@ViewData["Title"]</h1>
+                    <p class="text-muted mt-2">
+                        Transparency and trust are at the core of everything we do.
+                    </p>
+                </div>
+
+                <section class="mb-5">
+                    <h4 class="section-title"><i class="bi bi-person-lines-fill text-primary"></i> Information We Collect</h4>
+                    <p class="section-text mt-2">
+                        We collect information that helps us provide better services to our users. This includes personal details such as your name and email, as well as technical data such as browser type and interaction history.
+                    </p>
+                </section>
+
+                <section class="mb-5">
+                    <h4 class="section-title"><i class="bi bi-gear text-success"></i> How We Use Your Information</h4>
+                    <p class="section-text mt-2">
+                        The data we collect is used to enhance your experience, personalize content, improve functionality, and maintain a secure environment for all users.
+                    </p>
+                </section>
+
+                <section class="mb-5">
+                    <h4 class="section-title"><i class="bi bi-shield-lock text-danger"></i> Data Protection</h4>
+                    <p class="section-text mt-2">
+                        Your privacy is protected using modern encryption and access control systems. We regularly update our policies and security measures to ensure maximum protection.
+                    </p>
+                </section>
+
+                <section class="mb-5">
+                    <h4 class="section-title"><i class="bi bi-envelope-at text-warning"></i> Contact Us</h4>
+                    <p class="section-text mt-2">
+                        If you have any questions or concerns about this policy, please contact us at
+                        <a href="mailto:privacy@yourcompany.com" class="text-decoration-none fw-semibold">AbdelrahmanMansour@yourcompany.com</a>.
+                    </p>
+                </section>
+
+                <div class="text-center mt-5">
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-lg btn-primary rounded-pill px-5 shadow-sm">
+                        <i class="bi bi-arrow-left"></i> Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
