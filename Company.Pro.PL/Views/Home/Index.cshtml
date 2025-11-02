@@ -1,8 +1,135 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    /* Hero Section */
+    .hero {
+        position: relative;
+        height: 80vh;
+        background: linear-gradient(135deg, #2563eb, #1e3a8a);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+    }
+
+    .hero-content {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2.5rem 3rem;
+        border-radius: 1rem;
+        backdrop-filter: blur(8px);
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #fff;
+    }
+
+    .hero p {
+        color: #e0e7ff;
+        font-size: 1.2rem;
+        margin-top: 1rem;
+    }
+
+    .hero-btn {
+        margin-top: 2rem;
+        padding: 0.8rem 2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1rem;
+        background-color: #ffffff;
+        color: #2563eb;
+        border: none;
+        transition: all 0.3s ease-in-out;
+        text-decoration: none;
+        display: inline-block;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            background-color: #dbeafe;
+            color: #1e3a8a;
+        }
+
+    /* Features Section */
+    .features {
+        background-color: #f9fafb;
+        padding: 80px 0;
+    }
+
+    .feature-card {
+        background: white;
+        border-radius: 1rem;
+        padding: 2rem;
+        text-align: center;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: #2563eb;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h5 {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .feature-card p {
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+</style>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Welcome to Our Application</h1>
+        <p>Build fast, modern, and secure web applications using ASP.NET Core.</p>
+        <a href="https://learn.microsoft.com/aspnet/core" target="_blank" class="hero-btn">
+            <i class="bi bi-book"></i> Learn More
+        </a>
+    </div>
+</section>
+
+<!-- Features Section -->
+<div class="features">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-5">Why Developers Love ASP.NET Core</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="bi bi-speedometer2"></i>
+                    <h5>Blazing Fast</h5>
+                    <p>Optimized performance for both small and enterprise-scale applications.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="bi bi-shield-lock"></i>
+                    <h5>Secure by Default</h5>
+                    <p>Built-in protection against common web vulnerabilities and attacks.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="bi bi-code-slash"></i>
+                    <h5>Developer Friendly</h5>
+                    <p>Clean architecture, dependency injection, and an amazing ecosystem.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
