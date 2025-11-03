@@ -1,17 +1,23 @@
 ﻿@model string
 
 <td>
-    <a asp-action="Details" asp-route-id="@Model" class="btn btn-info">
+    <a asp-action="Details" asp-route-id="@Model"
+       class="btn text-white shadow-sm"
+       style="background: linear-gradient(135deg, #5bc0de, #6c63ff); border: none;">
         🔍 Details
     </a>
 </td>
 <td>
-    <a asp-action="Edit" asp-route-id="@Model" class="btn btn-warning text-white">
+    <a asp-action="Edit" asp-route-id="@Model"
+       class="btn text-white shadow-sm"
+       style="background: linear-gradient(135deg, #ffb74d, #ff9800); border: none;">
         ✏️ Update
     </a>
 </td>
 <td>
-    <a asp-action="Delete" asp-route-id="@Model" class="btn btn-danger">
+    <a asp-action="Delete" asp-route-id="@Model"
+       class="btn text-white shadow-sm"
+       style="background: linear-gradient(135deg, #e57373, #d32f2f); border: none;">
         🗑️ Delete
     </a>
 </td>

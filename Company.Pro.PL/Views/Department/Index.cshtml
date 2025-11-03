@@ -5,10 +5,21 @@
     // string? ViewBagMessage = ViewBag.Message; // No need to cast
 }
 
-<h1>All Department</h1>
+<h1 class="text-center fw-bold display-5 mb-4"
+    style="background: linear-gradient(135deg, #6c63ff, #5bc0de);
+           -webkit-background-clip: text;
+           -webkit-text-fill-color: transparent;
+           text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+           letter-spacing: 1px;">
+    🗂️ All Departments
+</h1>
+
+<hr class="mb-5"
+    style="width: 100px; height: 4px; background-color: #6c63ff; border: none; margin: 0 auto;" />
 
 <br />
 <br />
+
 
 
 @* <div class="alert alert-danger">
@@ -32,44 +43,64 @@
     </div>
 }
 
-<a asp-action="Create" asp-controller="Department" class="btn btn-primary">Create Department</a>
+<a asp-action="Create" asp-controller="Department"
+   class="btn mb-4 shadow-sm px-4 py-2 text-white fw-semibold"
+   style="background: linear-gradient(135deg, #6c63ff, #5bc0de); border: none;">
+     Create Department
+</a>
 
-<br />
-<br />
-
-@if (Model.Count() > 0)
+@if (Model.Any())
 {
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>Code</th>
-                <th>Name</th>
-                <th>DateOfCreation</th>
-                <th>Datails</th>
-                <th>Update</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-          @foreach(var item in Model)
-          {
-              <tr>
-                  <td>@item.Code</td>
-                  <td>@item.Name</td>
-                  <td>@item.CreateAt.ToString("dd/MM/yyyy")</td>
-                  <partial name="ThreeButtonPartialView" model="@item.Id.ToString()" />
-              </tr>
-            }
-        </tbody>
-   </table>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col">
+                <div class="card shadow-sm border-0 rounded-4 h-100 overflow-hidden"
+                     style="background-color: #f8f9fa; transition: all 0.3s ease;">
+
+                    <!-- Header -->
+                    <div class="card-header text-center py-3"
+                         style="background: linear-gradient(135deg, #6c63ff, #5bc0de); color: white;">
+                        <h5 class="mb-0 fw-bold">@item.Name</h5>
+                    </div>
+
+                    <!-- Body -->
+                    <div class="card-body" style="background-color: #ffffff;">
+                        <table class="table table-borderless mb-0">
+                            <tbody>
+                                <tr>
+                                    <th class="text-muted">Code:</th>
+                                    <td class="fw-semibold text-dark">@item.Code</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-muted">Created:</th>
+                                    <td class="text-dark">@item.CreateAt.ToString("dd/MM/yyyy")</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Footer Buttons -->
+                    <div class="card-footer bg-light border-0 text-center pb-3">
+                        <partial name="ThreeButtonPartialView" model="@item.Id.ToString()" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <style>
+        /* تأثير بسيط عند المرور */
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+    </style>
 }
 else
 {
-    <div class="mt-4 alert alert-warning">
-        <h4>No Departments found :(</h4>
+    <div class="alert alert-warning mt-4 shadow-sm text-center">
+        <h4>No Departments Found 😢</h4>
+        <p>Try adding a new department to get started.</p>
     </div>
 }
-
-
-
-

@@ -1,25 +1,25 @@
 ﻿@model UserToReturnDto
 
-
 <div class="my-3">
-    <label asp-for="UserName"></label>
-    <input asp-for="UserName" class="form-control" />
+    <label asp-for="UserName" class="form-label fw-semibold text-secondary"></label>
+    <input asp-for="UserName" class="form-control shadow-sm rounded-3" placeholder="Enter username" />
     <span asp-validation-for="UserName" class="text-danger"></span>
 </div>
+
 <div class="my-3">
-    <label asp-for="FirstName"></label>
-    <input asp-for="FirstName" class="form-control" />
+    <label asp-for="FirstName" class="form-label fw-semibold text-secondary"></label>
+    <input asp-for="FirstName" class="form-control shadow-sm rounded-3" placeholder="Enter first name" />
     <span asp-validation-for="FirstName" class="text-danger"></span>
 </div>
+
 <div class="my-3">
-    <label asp-for="LastName"></label>
-    <input asp-for="LastName" class="form-control" />
+    <label asp-for="LastName" class="form-label fw-semibold text-secondary"></label>
+    <input asp-for="LastName" class="form-control shadow-sm rounded-3" placeholder="Enter last name" />
     <span asp-validation-for="LastName" class="text-danger"></span>
 </div>
+
 <div class="my-3">
-    <label asp-for="Email"></label>
-    <input asp-for="Email" class="form-control" />
+    <label asp-for="Email" class="form-label fw-semibold text-secondary"></label>
+    <input asp-for="Email" class="form-control shadow-sm rounded-3" placeholder="Enter email address" />
     <span asp-validation-for="Email" class="text-danger"></span>
 </div>
-
-

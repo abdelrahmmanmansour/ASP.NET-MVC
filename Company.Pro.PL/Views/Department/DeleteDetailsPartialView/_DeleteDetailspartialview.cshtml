@@ -1,14 +1,34 @@
 ﻿@model Department
+
+<style>
+    label {
+        font-weight: 500;
+        color: #1e293b;
+    }
+
+    .form-control {
+        background-color: #f1f5f9;
+        border: 1px solid #e2e8f0;
+        color: #0f172a;
+    }
+
+        .form-control[readonly] {
+            background-color: #f8fafc;
+            opacity: 0.9;
+        }
+</style>
+
 <div class="my-3">
     <label asp-for="Code"></label>
     <input asp-for="Code" class="form-control" readonly />
 </div>
+
 <div class="my-3">
     <label asp-for="Name"></label>
     <input asp-for="Name" class="form-control" readonly />
 </div>
+
 <div class="my-3">
     <label asp-for="CreateAt"></label>
     <input asp-for="CreateAt" class="form-control" readonly />
 </div>
-

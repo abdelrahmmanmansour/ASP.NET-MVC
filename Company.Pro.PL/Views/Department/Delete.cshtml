@@ -1,17 +1,73 @@
 ﻿@model Department
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Delete Department";
 }
 
-<h1>Delete Department</h1>
+<style>
+    body {
+        background: linear-gradient(135deg, #fee2e2, #f8fafc);
+        min-height: 100vh;
+        font-family: 'Poppins', sans-serif;
+    }
 
-<br />
-<br />
+    .delete-container {
+        max-width: 600px;
+        margin: 60px auto;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(12px);
+        padding: 35px 45px;
+        border-radius: 18px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        border: 1px solid #fecaca;
+    }
 
-<form asp-action="Delete" asp-controller="Department">
-    <partial name="DeleteDetailsPartialView/_DeleteDetailspartialview" />
-    <br />
-    <button type="submit" class="btn btn-danger">Delete</button>
-    <a asp-action="Index" asp-controller="Department" class="btn btn-secondary">Back to List</a>
-</form>
+    h1 {
+        text-align: center;
+        font-weight: 600;
+        margin-bottom: 35px;
+        color: #dc2626;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
 
+    .btn-danger {
+        background-color: #ef4444;
+        border: none;
+        transition: 0.3s;
+    }
+
+        .btn-danger:hover {
+            background-color: #dc2626;
+        }
+
+    .btn-secondary {
+        background-color: #94a3b8;
+        border: none;
+        color: white;
+        transition: 0.3s;
+    }
+
+        .btn-secondary:hover {
+            background-color: #64748b;
+        }
+
+    p.confirm-text {
+        text-align: center;
+        color: #b91c1c;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="delete-container">
+    <h1>Delete Department</h1>
+
+    <p class="confirm-text">Are you sure you want to delete this department?</p>
+
+    <form asp-action="Delete" asp-controller="Department" method="post">
+        <partial name="DeleteDetailsPartialView/_DeleteDetailspartialview" />
+        <div class="d-flex justify-content-between mt-4">
+            <button type="submit" class="btn btn-danger px-4">Delete</button>
+            <a asp-action="Index" asp-controller="Department" class="btn btn-secondary px-4">Back to List</a>
+        </div>
+    </form>
+</div>
