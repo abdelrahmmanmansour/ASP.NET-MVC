@@ -1,21 +1,58 @@
 ﻿@model CreateEmployeeDto
+
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit Employee";
 }
 
-<h1>Edit Employee</h1>
+<div class="container mt-5">
+    <h1 class="text-center fw-bold mb-4" style="background: linear-gradient(135deg, #4f46e5, #06b6d4);
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+        Edit Employee
+    </h1>
 
-<br />
-<br />
+    <form asp-action="Edit" asp-controller="Employee" enctype="multipart/form-data">
+        <div class="card shadow-lg border-0 rounded-4 p-4">
+            <partial name="Create-Edit-PartialView/_CreateEditPartialView" />
+            <input asp-for="ImageName" type="hidden" />
+        </div>
 
-<form asp-action="Edit" asp-controller="Employee" enctype="multipart/form-data">
-    <partial name="Create-Edit-PartialView/_CreateEditPartialView" />
-    <input asp-for="ImageName" hidden/>
-    <br />
-    <button type="submit" class="btn btn-primary">Save</button>
-    <a asp-action="Index" asp-controller="Employee" class="btn btn-secondary">Back to List</a>
-</form>
+        <div class="d-flex justify-content-center gap-3 mt-4">
+            <button type="submit" class="btn btn-warning px-4 py-2 fw-semibold shadow-sm rounded-pill text-white">
+                <i class="bi bi-save2-fill me-2"></i> Save Changes
+            </button>
+
+            <a asp-action="Index" asp-controller="Employee"
+               class="btn btn-outline-secondary px-4 py-2 fw-semibold rounded-pill shadow-sm">
+                <i class="bi bi-arrow-left-circle me-2"></i> Back to List
+            </a>
+        </div>
+    </form>
+</div>
+
 @section ValidationSection {
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 }
+
+<style>
+    .btn-warning {
+        background: linear-gradient(135deg, #f59e0b, #d97706);
+        border: none;
+        transition: 0.3s;
+    }
+
+        .btn-warning:hover {
+            background: linear-gradient(135deg, #d97706, #b45309);
+            transform: translateY(-2px);
+        }
+
+    .btn-outline-secondary:hover {
+        background-color: #e2e8f0;
+        color: #1e293b;
+    }
+
+    form {
+        max-width: 950px;
+        margin: 0 auto;
+    }
+</style>

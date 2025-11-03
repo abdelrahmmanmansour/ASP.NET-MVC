@@ -1,42 +1,63 @@
 ﻿@model Employee
-<div class="my-3">
-    <label asp-for="Name"></label>
-    <input asp-for="Name" class="form-control" readonly />
-</div>
-<div class="my-3">
-    <label asp-for="Age"></label>
-    <input asp-for="Age" class="form-control" readonly />
-</div>
-<div class="my-3">
-    <label asp-for="Email"></label>
-    <input asp-for="Email" class="form-control" readonly />
-</div>
-<div class="my-3">
-    <label asp-for="Address"></label>
-    <input asp-for="Address" class="form-control" readonly />
-</div>
-<div class="my-3">
-    <label asp-for="Phone"></label>
-    <input asp-for="Phone" class="form-control" readonly />
-</div>
-<div class="my-3">
-    <label asp-for="Salary"></label>
-    <input asp-for="Salary" class="form-control" readonly />
-</div>
-<div class="my-3">
-    readonly
-    <input asp-for="IsActive" class="form-check" readonly />
-    <label asp-for="IsActive"></label>
-</div>
-<div class="my-3">
-    <input asp-for="IsDeleted" class="form-check" readonly />
-    <label asp-for="IsDeleted"></label>
-</div>
-<div class="my-3">
-    <label asp-for="HiringDate"></label>
-    <input asp-for="HiringDate" class="form-control" readonly />
-</div>
-<div class="my-3">
-    <label asp-for="CreateAt"></label>
-    <input asp-for="CreateAt" class="form-control" readonly />
-</div>
+
+
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-body px-5 py-4 bg-light">
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label asp-for="Name" class="form-label fw-semibold text-secondary"></label>
+                    <input asp-for="Name" class="form-control border-0 shadow-sm bg-white" readonly />
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="Age" class="form-label fw-semibold text-secondary"></label>
+                    <input asp-for="Age" class="form-control border-0 shadow-sm bg-white" readonly />
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label asp-for="Email" class="form-label fw-semibold text-secondary"></label>
+                    <input asp-for="Email" class="form-control border-0 shadow-sm bg-white" readonly />
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="Phone" class="form-label fw-semibold text-secondary"></label>
+                    <input asp-for="Phone" class="form-control border-0 shadow-sm bg-white" readonly />
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label asp-for="Address" class="form-label fw-semibold text-secondary"></label>
+                    <input asp-for="Address" class="form-control border-0 shadow-sm bg-white" readonly />
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="Salary" class="form-label fw-semibold text-secondary"></label>
+                    <input asp-for="Salary" class="form-control border-0 shadow-sm bg-white" readonly />
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6 d-flex align-items-center">
+                    <input asp-for="IsActive" class="form-check-input me-2" disabled />
+                    <label asp-for="IsActive" class="form-check-label fw-semibold text-secondary"></label>
+                </div>
+                <div class="col-md-6 d-flex align-items-center">
+                    <input asp-for="IsDeleted" class="form-check-input me-2" disabled />
+                    <label asp-for="IsDeleted" class="form-check-label fw-semibold text-secondary"></label>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label asp-for="HiringDate" class="form-label fw-semibold text-secondary"></label>
+                    <input asp-for="HiringDate" class="form-control border-0 shadow-sm bg-white" readonly />
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="CreateAt" class="form-label fw-semibold text-secondary"></label>
+                    <input asp-for="CreateAt" class="form-control border-0 shadow-sm bg-white" readonly />
+                </div>
+            </div>
+
+        </div>
+    </div>

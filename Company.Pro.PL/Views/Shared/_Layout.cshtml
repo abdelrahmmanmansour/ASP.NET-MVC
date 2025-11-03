@@ -84,12 +84,38 @@
     @*End Body*@
 
     @*Start Footer*@
-    <footer class="border-top footer text-muted">
-        <div class="container text-center">
-            &copy; 2025 - Company.Pro.PL - <a asp-area="" asp-controller="Home" asp-action="Privacy">🔒 Privacy</a>
+    <footer class="border-top footer text-muted slim-footer">
+        <div class="text-center">
+            &copy; 2025 - Company -
+            <a asp-area="" asp-controller="Home" asp-action="Privacy">🔒 Privacy</a>
         </div>
     </footer>
     @*End Footer*@
+
+    <style>
+        .slim-footer {
+            font-size: 0.8rem; /* تصغير الخط */
+            padding: 3px 0; /* تقليل الارتفاع */
+            margin-top: 8px; /* مسافة بسيطة فوقه */
+            width: 90%; /* تقليل العرض (بدل 100%) */
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 8px; /* زوايا ناعمة */
+            background-color: #f8f9fa; /* لون خفيف لو عايز يبان */
+        }
+
+            .slim-footer a {
+                color: #6c757d;
+                text-decoration: none;
+                font-size: 0.8rem;
+            }
+
+                .slim-footer a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+
+
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

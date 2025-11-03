@@ -1,18 +1,25 @@
 ﻿@model UserToReturnDto
-<div class="my-3">
-    <label asp-for="UserName"></label>
-    <input asp-for="UserName" class="form-control" readonly />
-</div>
-<div class="my-3">
-    <label asp-for="FirstName"></label>
-    <input asp-for="FirstName" class="form-control" readonly />
-</div>
-<div class="my-3">
-    <label asp-for="LastName"></label>
-    <input asp-for="LastName" class="form-control" readonly />
-</div>
-<div class="my-3">
-    <label asp-for="Email"></label>
-    <input asp-for="Email" class="form-control" readonly />
-</div>
 
+<div class="card shadow-sm border-0 rounded-4 mb-3">
+    <div class="card-body p-4" style="background-color: #f8f9fa;">
+        <div class="my-3">
+            <label asp-for="UserName" class="form-label fw-semibold text-secondary"></label>
+            <input asp-for="UserName" class="form-control shadow-sm rounded-3" readonly />
+        </div>
+
+        <div class="my-3">
+            <label asp-for="FirstName" class="form-label fw-semibold text-secondary"></label>
+            <input asp-for="FirstName" class="form-control shadow-sm rounded-3" readonly />
+        </div>
+
+        <div class="my-3">
+            <label asp-for="LastName" class="form-label fw-semibold text-secondary"></label>
+            <input asp-for="LastName" class="form-control shadow-sm rounded-3" readonly />
+        </div>
+
+        <div class="my-3">
+            <label asp-for="Email" class="form-label fw-semibold text-secondary"></label>
+            <input asp-for="Email" class="form-control shadow-sm rounded-3" readonly />
+        </div>
+    </div>
+</div>

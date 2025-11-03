@@ -1,10 +1,7 @@
 ﻿@model RoleToReturnDto
 
-
 <div class="my-3">
-    <label asp-for="Name"></label>
-    <input asp-for="Name" class="form-control" />
-    <span asp-validation-for="Name" class="text-danger"></span>
+    <label asp-for="Name" class="form-label fw-semibold"></label>
+    <input asp-for="Name" class="form-control form-control-lg rounded-3 shadow-sm" placeholder="Enter role name..." />
+    <span asp-validation-for="Name" class="text-danger small"></span>
 </div>
-
-
