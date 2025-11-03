@@ -12,7 +12,7 @@
 /* Body Background */
 body {
     font-family: 'Poppins', sans-serif;
-    background: radial-gradient(circle at 30% 30%, #000, #021326 70%, #000814);
+    background: linear-gradient(135deg, #0d0d2b, #001a4d, #000814);
     min-height: 100vh;
     display: flex;
     align-items: center;

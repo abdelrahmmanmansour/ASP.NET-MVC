@@ -3,15 +3,28 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete Employee</h1>
+<div class="container mt-5 mb-5">
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-header text-white text-center py-3 rounded-top-4"
+             style="background: linear-gradient(135deg, #dc3545, #ff6b6b);">
+            <h3 class="mb-0"><i class="bi bi-trash3-fill me-2"></i> Delete Employee</h3>
+        </div>
 
-<br />
-<br />
+        <div class="card-body px-5 py-4 bg-light">
+            <partial name="Delete-Details-PartialView/_DeleteDetailsPartialView" />
+            <input asp-for="ImageName" hidden />
+        </div>
 
-<form asp-action="Delete" asp-controller="Employee">
-    <partial name="Delete-Details-PartialView/_DeleteDetailsPartialView" />
-    <input asp-for="ImageName" hidden />
-    <br />
-    <button type="submit" class="btn btn-danger">Delete</button>
-    <a asp-action="Index" asp-controller="Employee" class="btn btn-secondary">Back to List</a>
-</form>
+        <div class="card-footer text-center bg-white border-0 pb-4">
+            <form asp-action="Delete" asp-controller="Employee" method="post" class="d-inline">
+                <button type="submit" class="btn btn-danger px-4 rounded-3 me-2">
+                    <i class="bi bi-trash"></i> Confirm Delete
+                </button>
+            </form>
+            <a asp-action="Index" asp-controller="Employee"
+               class="btn btn-outline-secondary px-4 rounded-3">
+                <i class="bi bi-arrow-left-circle"></i> Back to List
+            </a>
+        </div>
+    </div>
+</div>

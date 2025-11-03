@@ -1,24 +1,68 @@
 ﻿@model CreateDepartmentDto
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create Department";
 }
 
-<h1>Create Department </h1>
+<style>
+    body {
+        background: linear-gradient(135deg, #e0f2fe, #f8fafc);
+        min-height: 100vh;
+        font-family: 'Poppins', sans-serif;
+    }
 
+    .create-container {
+        max-width: 600px;
+        margin: 60px auto;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+        padding: 35px 45px;
+        border-radius: 18px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        border: 1px solid #dbeafe;
+    }
 
-<br />
-<br />
+    h1 {
+        text-align: center;
+        font-weight: 600;
+        margin-bottom: 35px;
+        color: #0ea5e9;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
 
-<form asp-action="Create" asp-controller="Department" method="post">
-    <partial name="CreateEditPartialView/createeditpartialview" />
-    <br />
-    <button type="submit" class="btn btn-primary">Create</button>
-    <a asp-action="Index" asp-controller="Department" class="btn btn-secondary">Back to List</a>
-</form>
+    .btn-primary {
+        background-color: #0ea5e9;
+        border: none;
+        transition: 0.3s;
+    }
+
+        .btn-primary:hover {
+            background-color: #0284c7;
+        }
+
+    .btn-secondary {
+        background-color: #94a3b8;
+        border: none;
+        transition: 0.3s;
+    }
+
+        .btn-secondary:hover {
+            background-color: #64748b;
+        }
+</style>
+
+<div class="create-container">
+    <h1>Create Department</h1>
+
+    <form asp-action="Create" asp-controller="Department" method="post">
+        <partial name="CreateEditPartialView/createeditpartialview" />
+        <div class="d-flex justify-content-between mt-4">
+            <button type="submit" class="btn btn-primary px-4">Create</button>
+            <a asp-action="Index" asp-controller="Department" class="btn btn-secondary px-4">Back to List</a>
+        </div>
+    </form>
+</div>
+
 @section ValidationSection {
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 }
-
-
-
