@@ -1,7 +1,7 @@
 # 🏢 Company Management System
 
 
-🎥 [Watch Demo Video](https://drive.google.com/file/d/1SClicIb5MXXTlpmiDJ3wk8RJ5-XZHve6/view?usp=sharing)
+🎥 [Watch Demo Video](https://drive.google.com/drive/folders/1x0Z5k537UM6qxv6YJGQTH-WJuSSCtSPc)
 
 **ASP.NET Core MVC | Entity Framework Core | SQL Server | Repository & Unit of Work | Dependency Injection | AutoMapper | Bootstrap | Razor Views**
 
