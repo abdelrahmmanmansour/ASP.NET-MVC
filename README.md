@@ -1,4 +1,4 @@
-# Company Management System
+# 🏢 Company Management System
 
 🎥 Watch Demo Video
 🎥 [Watch Demo Video](https://drive.google.com/drive/folders/15d9nQMW3lHCYYhv8JGl3CcqFGJb3yRQC?usp=sharing)
