@@ -1,5 +1,5 @@
 ﻿/*---------------------------
-    Modern Login Page - Blue Neon
+    Modern Login Page - Blue Neon (Refined & Responsive)
 ----------------------------*/
 
 /* Reset */
@@ -12,36 +12,42 @@
 /* Body Background */
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #0d0d2b, #001a4d, #000814);
+    background: linear-gradient(135deg, #001529, #002b55, #f5f7fa); /* soft fade to white to match modules */
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #66ccff; /* Electric blue text */
+    color: #66ccff;
 }
 
 /* --- Card Container --- */
 .main-agileinfo {
-    width: 380px;
+    width: 90%; /* responsive width */
+    max-width: 380px; /* original max width */
     padding: 2.5em 2em;
-    border-radius: 20px;
-    background: rgba(0, 10, 25, 0.7);
-    backdrop-filter: blur(15px);
-    box-shadow: 0 0 25px rgba(0, 170, 255, 0.25), inset 0 0 10px rgba(0, 150, 255, 0.2), 0 0 40px rgba(0, 200, 255, 0.15);
-    border: 1px solid rgba(0, 180, 255, 0.4);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.05); /* subtle glass effect */
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 20px rgba(0, 170, 255, 0.2), inset 0 0 5px rgba(0, 150, 255, 0.1);
+    border: 1px solid rgba(0, 180, 255, 0.3);
     text-align: center;
-    animation: fadeIn 0.7s ease;
     transition: all 0.4s ease;
+    animation: fadeIn 0.7s ease;
 }
+
+    /* Card hover neon effect */
+    .main-agileinfo:hover {
+        animation: neonPulse 2.5s infinite ease-in-out;
+    }
 
 /* --- Title --- */
 h1 {
     font-size: 2em;
-    color: #00bfff;
+    color: #0099ff;
     margin-bottom: 1em;
     font-weight: 600;
     letter-spacing: 1px;
-    text-shadow: 0 0 10px #00bfff, 0 0 25px #0088ff, 0 0 40px #00ccff;
+    text-shadow: 0 0 5px #00bfff, 0 0 15px #0077ff;
 }
 
 /* --- Inputs --- */
@@ -51,14 +57,14 @@ input[type="password"] {
     width: 100%;
     padding: 0.9em 1em;
     margin: 0.8em 0;
-    border: 1px solid rgba(0, 170, 255, 0.4);
+    border: 1px solid rgba(0, 150, 255, 0.3);
     border-radius: 10px;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(255, 255, 255, 0.1);
     color: #66ccff;
     font-size: 0.95em;
-    transition: all 0.3s ease;
     outline: none;
-    box-shadow: inset 0 0 10px rgba(0, 100, 255, 0.15);
+    transition: all 0.3s ease;
+    box-shadow: inset 0 0 5px rgba(0, 120, 255, 0.1);
 }
 
 input::placeholder {
@@ -66,8 +72,8 @@ input::placeholder {
 }
 
 input:focus {
-    background: rgba(0, 150, 255, 0.1);
-    box-shadow: 0 0 15px #00bfff, 0 0 30px #0088ff, inset 0 0 8px rgba(0, 150, 255, 0.3);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 10px #00bfff, inset 0 0 5px rgba(0, 150, 255, 0.2);
     transform: scale(1.02);
 }
 
@@ -77,20 +83,19 @@ input[type="submit"] {
     padding: 0.9em;
     border: none;
     border-radius: 10px;
-    background: linear-gradient(90deg, #00bfff 0%, #007bff 100%);
+    background: linear-gradient(90deg, #00bfff 0%, #0077ff 100%);
     color: #fff;
     font-size: 1em;
     font-weight: 600;
     cursor: pointer;
     margin-top: 1.5em;
     transition: all 0.3s ease;
-    text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 0 20px rgba(0, 170, 255, 0.25);
+    box-shadow: 0 0 15px rgba(0, 170, 255, 0.25);
 }
 
     input[type="submit"]:hover {
         transform: translateY(-2px);
-        box-shadow: 0 0 25px #00bfff, 0 0 50px #0088ff, inset 0 0 15px rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 25px #00bfff, 0 0 50px #0077ff, inset 0 0 10px rgba(255, 255, 255, 0.2);
     }
 
 /* --- Checkbox & Links --- */
@@ -99,7 +104,7 @@ input[type="submit"] {
     justify-content: space-between;
     font-size: 0.85em;
     color: #66ccff;
-    margin-top: 0.5em;
+    flex-wrap: wrap; /* wrap on small screens */
 }
 
 input.checkbox {
@@ -115,13 +120,11 @@ input.checkbox {
     .agileits-top p a {
         color: #66ccff;
         text-decoration: none;
-        text-shadow: 0 0 8px #00bfff;
-        transition: 0.3s;
+        transition: all 0.3s ease;
     }
 
         .agileits-top p a:hover {
             color: #fff;
-            text-shadow: 0 0 15px #00bfff;
         }
 
 /* --- Footer --- */
@@ -129,7 +132,6 @@ input.checkbox {
     margin-top: 2em;
     font-size: 0.8em;
     color: rgba(150, 200, 255, 0.7);
-    text-shadow: 0 0 6px #00bfff;
 }
 
 /* --- Animation --- */
@@ -145,17 +147,36 @@ input.checkbox {
     }
 }
 
-/* --- Neon Pulse --- */
 @keyframes neonPulse {
     0%, 100% {
-        box-shadow: 0 0 20px rgba(0,170,255,0.3), 0 0 40px rgba(0,170,255,0.1), inset 0 0 10px rgba(0,200,255,0.1);
+        box-shadow: 0 0 15px rgba(0,170,255,0.2), 0 0 30px rgba(0,170,255,0.1);
     }
 
     50% {
-        box-shadow: 0 0 40px rgba(0,200,255,0.6), 0 0 80px rgba(0,200,255,0.3), inset 0 0 20px rgba(0,200,255,0.3);
+        box-shadow: 0 0 30px rgba(0,200,255,0.4), 0 0 60px rgba(0,200,255,0.2);
     }
 }
 
-.main-agileinfo:hover {
-    animation: neonPulse 2.5s infinite ease-in-out;
+/* --- Responsive --- */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="submit"] {
+        padding: 0.8em;
+        font-size: 0.9em;
+    }
+
+    .main-agileinfo {
+        padding: 2em 1.5em;
+    }
+
+    .wthree-text {
+        flex-direction: column;
+        gap: 0.5em;
+    }
 }
